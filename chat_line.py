@@ -16,7 +16,6 @@ def convert(lines, name1, name2):
 	name2_word_count = 0
 	name2_strike_count = 0
 	name2_picture_count = 0
-	choos = 0
 	for line in lines:
 		s = line.split(' ')
 		time = s[0]
@@ -39,7 +38,6 @@ def convert(lines, name1, name2):
 						name2_word_count += len(msg)
 		else:
 			print('此對話紀錄未含有此人名')
-			choose = 1
 			return 0
 			break
 	print(f'{name1}說了 {name1_word_count} 個字')
