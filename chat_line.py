@@ -16,6 +16,7 @@ def convert(lines, name1, name2):
 	name2_word_count = 0
 	name2_strike_count = 0
 	name2_picture_count = 0
+	choos = 0
 	for line in lines:
 		s = line.split(' ')
 		time = s[0]
@@ -36,6 +37,11 @@ def convert(lines, name1, name2):
 			else:
 					for msg in s[2:]:
 						name2_word_count += len(msg)
+		else:
+			print('此對話紀錄未含有此人名')
+			choose = 1
+			return 0
+			break
 	print(f'{name1}說了 {name1_word_count} 個字')
 	print(f'{name1}傳了 {name1_strike_count} 張貼圖') 
 	print(f'{name1}傳了 {name1_picture_count} 張圖片')
@@ -43,8 +49,6 @@ def convert(lines, name1, name2):
 	print(f'{name2}說了 {name2_word_count} 個字') 
 	print(f'{name2}傳了 {name2_strike_count} 張貼圖')
 	print(f'{name2}傳了 {name2_picture_count} 張圖片')
-	return new
-
 #寫入新的對話紀錄
 def writ_file(filename, output):
 	with open (filename, 'w', encoding = 'utf-8') as file:
@@ -56,8 +60,7 @@ def main():
 	user_input = input('請輸入要讀取的LINE對話紀錄: ')
 	user_name1 = input('請輸入對話紀錄內人名1: ')
 	user_name2 = input('請輸入對話紀錄內人名2: ')
-	lines = read_file('-LINE-Viki.txt')
+	lines = read_file(user_input)
 	lines = convert(lines, user_name1, user_name2)
-	# writ_file('output.txt', lines)
 
 main()
